@@ -136,6 +136,7 @@ void KruskalMST(struct Graph* graph)
     return;
 }
 
+
     // Driver program to test above functions
 int main()
 {
@@ -143,41 +144,77 @@ int main()
      10
      0--------1
      |  \     |
-    6|   5\   |15
+     6|   5\   |15
      |      \ |
      2--------3
      4       */
+    
     int V = 4;  // Number of vertices in graph
     int E = 5;  // Number of edges in graph
+    int N,size,a,b = 0;
+    
+    
+    char file_name[25];
+    FILE *fp;
+    
+        //READ
+    printf("Enter the name of the graph file:");
+    gets(file_name);
+    
+    fp = fopen(file_name,"r"); // read mode
+    
+    if( fp == NULL )
+    {
+        perror("Error");
+        exit(EXIT_FAILURE);
+    }
+    
     struct Graph* graph = createGraph(V, E);
     
+    fscanf(fp,"%d",&N); //read the values in
+    size = N;
     
-        // add edge 0-1
-    graph->edge[0].src = 0;
-    graph->edge[0].dest = 1;
-    graph->edge[0].weight = 10;
+    int** mat=malloc((size+1)*sizeof(int*));
+    for(a=0;a<size;++a)
+        mat[a]=malloc(1*sizeof(int));
     
-        // add edge 0-2
-    graph->edge[1].src = 0;
-    graph->edge[1].dest = 2;
-    graph->edge[1].weight = 6;
     
-        // add edge 0-3
-    graph->edge[2].src = 0;
-    graph->edge[2].dest = 3;
-    graph->edge[2].weight = 5;
+    for(a = 0; a < size; a++)
+    {
+        for(b = 0; b < 3; b++)
+        {
+            
+            if (!fscanf(fp, "%d", &mat[a][b]))
+                break;
+            switch (b) {
+                case 0:
+                        //  printf("src: %d ",mat[a][b]);
+                    graph->edge[a].src = mat[a][b];
+                    break;
+                case 1:
+                        // printf("dest: %d ",mat[a][b]);
+                    graph->edge[a].dest = mat[a][b];
+                    break;
+                case 2:
+                        //  printf("weight: %d ",mat[a][b]);
+                    graph->edge[a].weight = mat[a][b];
+                    break;
+                default:
+                    break;
+            }
+            
+            
+        }
+        printf("\n");
+    }
     
-        // add edge 1-3
-    graph->edge[3].src = 1;
-    graph->edge[3].dest = 3;
-    graph->edge[3].weight = 15;
     
-        // add edge 2-3
-    graph->edge[4].src = 2;
-    graph->edge[4].dest = 3;
-    graph->edge[4].weight = 4;
+    fclose(fp);
+    
+        //READ
     
     KruskalMST(graph);
+    
     
     return 0;
 }

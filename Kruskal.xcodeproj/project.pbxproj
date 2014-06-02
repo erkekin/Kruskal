@@ -28,6 +28,7 @@
 		FF4E130F193A022800B5EFDD /* Kruskal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kruskal; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4E1312193A022800B5EFDD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		FF4E1314193A022800B5EFDD /* Kruskal.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Kruskal.1; sourceTree = "<group>"; };
+		FF4E134D193CAF5300B5EFDD /* graph1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graph1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		FF4E1311193A022800B5EFDD /* Kruskal */ = {
 			isa = PBXGroup;
 			children = (
+				FF4E134D193CAF5300B5EFDD /* graph1.txt */,
 				FF4E1312193A022800B5EFDD /* main.c */,
 				FF4E1314193A022800B5EFDD /* Kruskal.1 */,
 			);
@@ -227,6 +229,7 @@
 				FF4E131A193A022800B5EFDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

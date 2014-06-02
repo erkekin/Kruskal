@@ -129,9 +129,11 @@ void KruskalMST(struct Graph* graph)
     }
     
         // print the contents of result[] to display the built MST
-    printf("Following are the edges in the constructed MST\n");
+    printf("MST consists of the following edges:\n");
+      printf("Vertex1 Vertex2 Weight\n");
+      printf("------- ------- -------\n");
     for (i = 0; i < e; ++i)
-        printf("%d -- %d == %d\n", result[i].src, result[i].dest,
+        printf("%4d  %6d  %8d\n", result[i].src, result[i].dest,
                result[i].weight);
     return;
 }
@@ -140,18 +142,12 @@ void KruskalMST(struct Graph* graph)
     // Driver program to test above functions
 int main()
 {
-    /* Let us create following weighted graph
-     10
-     0--------1
-     |  \     |
-     6|   5\   |15
-     |      \ |
-     2--------3
-     4       */
     
-    int V = 4;  // Number of vertices in graph
-    int E = 5;  // Number of edges in graph
-    int N,size,a,b = 0;
+    
+    
+    int V;  // Number of vertices in graph
+    int E;  // Number of edges in graph
+    int size,a,b = 0;
     
     
     char file_name[25];
@@ -169,10 +165,13 @@ int main()
         exit(EXIT_FAILURE);
     }
     
-    struct Graph* graph = createGraph(V, E);
+    while(fscanf(fp, "%*[^\n]\n")!=EOF) E++;
     
-    fscanf(fp,"%d",&N); //read the values in
-    size = N;
+    fp = fopen(file_name,"r"); // read mode
+    
+    fscanf(fp,"%d",&V); //read the values in
+    struct Graph* graph = createGraph(V, E);
+    size = 6;
     
     int** mat=malloc((size+1)*sizeof(int*));
     for(a=0;a<size;++a)
@@ -205,9 +204,8 @@ int main()
             
             
         }
-        printf("\n");
+        
     }
-    
     
     fclose(fp);
     
